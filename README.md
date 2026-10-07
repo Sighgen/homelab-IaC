@@ -1,15 +1,11 @@
-# Homelab Ideas
-#
-# A collection of applications, services and infrastructure components
-# that could be explored or deployed as part of the homelab.
-#
-# The goal is not to run everything.
-# Each component should have a practical or educational purpose.
+## Homelab Ideas
+## A collection of applications, services and infrastructure components
+## that could be explored or deployed as part of the homelab.
+## The goal is not to run everything.
+## Each component should have a practical or educational purpose.
 
 
-# ============================================================
-# INFRASTRUCTURE
-# ============================================================
+### INFRASTRUCTURE
 
 - Debian Trixie
   - Base operating system for the homelab.
@@ -41,9 +37,8 @@
   - Useful for understanding network security.
 
 
-# ============================================================
-# NETWORKING
-# ============================================================
+---
+### NETWORKING
 
 - Pi-hole
   - Network-wide DNS filtering.
@@ -64,9 +59,8 @@
   - Can connect sensors and applications.
 
 
-# ============================================================
-# SECURITY & IDENTITY
-# ============================================================
+---
+### SECURITY & IDENTITY
 
 - Authentik
   - Identity Provider and Single Sign-On platform.
@@ -93,9 +87,8 @@
   - Useful for learning secrets management and secure application design.
 
 
-# ============================================================
-# MONITORING & OBSERVABILITY
-# ============================================================
+---
+### MONITORING & OBSERVABILITY
 
 - Prometheus
   - Collects and stores metrics.
@@ -136,9 +129,8 @@
   - Can be used for server and application notifications.
 
 
-# ============================================================
-# DEVELOPMENT
-# ============================================================
+---
+### DEVELOPMENT
 
 - Forgejo
   - Self-hosted Git platform.
@@ -181,9 +173,8 @@
   - Useful for development and database administration.
 
 
-# ============================================================
-# CI/CD
-# ============================================================
+---
+### CI/CD
 
 - GitHub Actions
   - Cloud-based CI/CD.
@@ -203,9 +194,8 @@
   - Can create pull requests for outdated packages, containers and GitHub Actions.
 
 
-# ============================================================
-# STORAGE & FILES
-# ============================================================
+---
+### STORAGE & FILES
 
 - Nextcloud
   - Private cloud platform.
@@ -226,9 +216,8 @@
   - Useful for synchronising files between computers.
 
 
-# ============================================================
-# BACKUP
-# ============================================================
+---
+### BACKUP
 
 - Restic
   - Encrypted backup tool.
@@ -244,9 +233,8 @@
   - Supports encrypted and deduplicated backups.
 
 
-# ============================================================
-# MEDIA
-# ============================================================
+---
+### MEDIA
 
 - Jellyfin
   - Self-hosted media server.
@@ -262,9 +250,8 @@
   - Useful for managing and streaming personal audio libraries.
 
 
-# ============================================================
-# PHOTOS & DOCUMENTS
-# ============================================================
+---
+### PHOTOS & DOCUMENTS
 
 - Immich
   - Self-hosted photo and video management.
@@ -278,9 +265,8 @@
   - Useful for learning document processing and search.
 
 
-# ============================================================
-# HOME AUTOMATION
-# ============================================================
+---
+### HOME AUTOMATION
 
 - Home Assistant
   - Home automation platform.
@@ -296,9 +282,8 @@
   - Useful for experimenting with event-driven systems and IoT.
 
 
-# ============================================================
-# PRODUCTIVITY
-# ============================================================
+---
+### PRODUCTIVITY
 
 - Vikunja
   - Self-hosted task and project management.
@@ -313,9 +298,8 @@
   - Useful for documentation and internal knowledge management.
 
 
-# ============================================================
-# COMMUNICATION
-# ============================================================
+---
+### COMMUNICATION
 
 - Matrix / Synapse
   - Decentralised messaging platform.
@@ -330,9 +314,8 @@
   - Useful for gaming or private communication.
 
 
-# ============================================================
-# DASHBOARDS
-# ============================================================
+---
+### DASHBOARDS
 
 - Homepage
   - Homelab dashboard.
@@ -359,9 +342,8 @@
     with infrastructure and observability.
 
 
-# ============================================================
-# AUTOMATION / IaC
-# ============================================================
+---
+### AUTOMATION / IaC
 
 - Ansible
   - Configuration management.
@@ -380,9 +362,8 @@
   - Can provide a graphical way to execute and monitor Ansible jobs.
 
 
-# ============================================================
-# AI / MACHINE LEARNING
-# ============================================================
+---
+### AI / MACHINE LEARNING
 
 - Ollama
   - Local LLM runtime.
@@ -402,9 +383,8 @@
   - Could expose an API and integrate with the homelab dashboard.
 
 
-# ============================================================
-# GAME SERVERS
-# ============================================================
+---
+### GAME SERVERS
 
 - Minecraft
   - Self-hosted Minecraft server.
@@ -419,9 +399,8 @@
   - Useful for learning game server deployment and persistence.
 
 
-# ============================================================
-# UTILITIES
-# ============================================================
+---
+### UTILITIES
 
 - Stirling PDF
   - Self-hosted PDF toolkit.
@@ -436,9 +415,8 @@
   - Useful for architecture diagrams and documentation.
 
 
-# ============================================================
-# POTENTIAL LEARNING PROJECTS
-# ============================================================
+---
+### POTENTIAL LEARNING PROJECTS
 
 - Reproducible Debian installation
   - Rebuild a server from a clean Debian installation.
@@ -507,9 +485,8 @@
   - Combine Home Assistant, MQTT and custom applications.
 
 
-# ============================================================
-# SUGGESTED CORE PLATFORM
-# ============================================================
+---
+### SUGGESTED CORE PLATFORM
 
 CORE=(
     "Debian Trixie"
@@ -556,9 +533,8 @@ CUSTOM=(
 )
 
 
-# ============================================================
-# SUGGESTED ARCHITECTURE
-# ============================================================
+---
+### SUGGESTED ARCHITECTURE
 
 SOURCE_CODE
     |
@@ -616,9 +592,8 @@ BACKUP
 RECOVERY
 
 
-# ============================================================
-# DESIGN PRINCIPLE
-# ============================================================
+---
+### DESIGN PRINCIPLE
 
 The homelab should not become a collection of random services.
 
@@ -637,9 +612,8 @@ Each service should answer at least one of the following questions:
 If the answer is no, the service probably does not need to be deployed.
 
 
-# ============================================================
-# OVERALL GOAL
-# ============================================================
+---
+### OVERALL GOAL
 
 The goal is to build a small platform where:
 
@@ -679,9 +653,8 @@ OBSERVABILITY
   RECOVERY
 
 
-# ============================================================
-# REPOSITORIES
-# ============================================================
+---
+### REPOSITORIES
 
 PUBLIC:
 
@@ -712,9 +685,8 @@ PRIVATE:
       - Hardware-specific configuration
 
 
-# ============================================================
-# LONG TERM VISION
-# ============================================================
+---
+### LONG TERM VISION
 
 A clean Debian installation should eventually be able to become
 a fully operational homelab server through automation.
@@ -753,10 +725,8 @@ Target workflow:
         v
     Operational Homelab
 
-
-# ============================================================
-# GENERATED WITH ASSISTANCE
-# ============================================================
+---
+### GENERATED WITH ASSISTANCE
 
 This document and the ideas contained within it were generated
 with assistance from ChatGPT (GPT-5.6 Luna).
