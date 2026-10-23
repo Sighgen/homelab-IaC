@@ -1,0 +1,16 @@
+
+---
+# Example inventory for the homelab.
+# Inventory tells Ansible which machines it can manage.
+# Replace these example values when the Debian server is ready.
+
+all:
+  children:
+    homelab:
+      hosts:
+        homelab-server:
+          # Reserved documentation IP, not a real server address.
+          ansible_host: 192.0.2.10
+
+          # Linux account Ansible will use for SSH connections.
+          ansible_user: homelab-admin
