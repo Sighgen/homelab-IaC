@@ -1,0 +1,48 @@
+---
+# Configure a default-deny firewall for the homelab.
+
+- name: Install UFW
+  # Install the uncomplicated firewall package on Debian.
+  ansible.builtin.apt:
+    name: ufw
+    state: present
+
+- name: Allow SSH before enabling the firewall
+  # Preserve remote administration before activating firewall rules.
+  community.general.ufw:
+    rule: allow
+    port: "{{ firewall_ssh_port }}"
+    proto: tcp
+
+- name: Set the default incoming firewall policy
+  # Deny unsolicited incoming connections by default.
+  community.general.ufw:
+    direction: incoming
+    policy: "{{ firewall_default_incoming_policy }}"
+
+- name: Set the default outgoing firewall policy
+  # Permit outbound traffic for updates and normal server operation.
+  community.general.ufw:
+    direction: outgoing
+    policy: "{{ firewall_default_outgoing_policy }}"
+
+- name: Allow configured TCP ports
+  # Open explicitly configured TCP ports for hosted services.
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop: "{{ firewall_allowed_tcp_ports }}"
+
+- name: Allow configured UDP ports
+  # Open explicitly configured UDP ports for hosted services.
+  community.general.ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: udp
+  loop: "{{ firewall_allowed_udp_ports }}"
+
+- name: Enable the firewall
+  # Activate the rules only after the SSH exception and policies exist.
+  community.general.ufw:
+    state: enabled

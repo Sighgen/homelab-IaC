@@ -1,0 +1,13 @@
+
+---
+# Configure the firewall independently from other server roles.
+
+- name: Configure homelab firewall
+  hosts: homelab
+
+  # Firewall changes require administrative privileges.
+  become: true
+
+  roles:
+    - firewall
+

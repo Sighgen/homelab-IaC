@@ -1,0 +1,23 @@
+
+---
+# Configure the basic packages required on a Debian homelab server.
+# This role is reusable across all hosts in the homelab inventory.
+
+- name: Refresh the APT package index
+  # Refresh package metadata, but reuse a cache that is less than one hour old.
+  ansible.builtin.apt:
+    update_cache: true
+    cache_valid_time: 3600
+
+- name: Install base administration packages
+  # Install tools useful for administration, troubleshooting and secure setup.
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - curl
+      - git
+      - htop
+      - nano
+      - sudo
+      - unattended-upgrades
+    state: present

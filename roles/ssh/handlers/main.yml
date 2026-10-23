@@ -1,0 +1,10 @@
+
+---
+# Handlers run only when notified by a task that changed something.
+
+- name: Restart SSH
+  # Restart the SSH daemon after its configuration has changed.
+  ansible.builtin.service:
+    name: ssh
+    state: restarted
+

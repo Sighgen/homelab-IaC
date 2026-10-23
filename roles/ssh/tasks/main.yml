@@ -1,0 +1,67 @@
+
+---
+# Install and configure OpenSSH on Debian homelab servers.
+
+- name: Install the OpenSSH server
+  # Install the service required for remote administration.
+  ansible.builtin.apt:
+    name: openssh-server
+    state: present
+
+- name: Create the homelab administration user
+  # Create a dedicated account instead of allowing direct root login.
+  ansible.builtin.user:
+    name: "{{ ssh_admin_user }}"
+    groups: "{{ ssh_admin_groups }}"
+    append: true
+    create_home: true
+    shell: /bin/bash
+    state: present
+
+- name: Install the administrator's public SSH key
+  # Copy the public key from the Ansible control machine.
+  # The private key never leaves the control machine.
+  ansible.posix.authorized_key:
+    user: "{{ ssh_admin_user }}"
+    key: "{{ lookup('file', ssh_public_key_file) }}"
+    state: present
+    manage_dir: true
+
+- name: Configure SSH daemon settings
+  # Generate the SSH configuration from our reusable template.
+  ansible.builtin.template:
+    src: sshd_config.j2
+    dest: /etc/ssh/sshd_config.d/00-homelab.conf
+    owner: root
+    group: root
+    mode: "0644"
+    validate: "/usr/sbin/sshd -t -f %s"
+  notify: Restart SSH
+
+- name: Read the effective SSH daemon configuration
+  # Inspect the settings OpenSSH will actually use.
+  ansible.builtin.command:
+    cmd: /usr/sbin/sshd -T
+  register: ssh_effective_config
+  changed_when: false
+
+- name: Verify required SSH security settings
+  # Stop the play if the effective configuration violates our policy.
+  ansible.builtin.assert:
+    that:
+      - "'pubkeyauthentication yes' in ssh_effective_config.stdout_lines"
+      - "'passwordauthentication no' in ssh_effective_config.stdout_lines"
+      - "'kbdinteractiveauthentication no' in ssh_effective_config.stdout_lines"
+      - "'permitrootlogin no' in ssh_effective_config.stdout_lines"
+    fail_msg: >-
+      The effective SSH configuration does not match the required
+      homelab security settings.
+    success_msg: "The required SSH security settings are active."
+
+- name: Ensure the SSH service is enabled and running
+  # Start SSH now and enable it automatically at boot.
+  ansible.builtin.service:
+    name: ssh
+    enabled: true
+    state: started
+

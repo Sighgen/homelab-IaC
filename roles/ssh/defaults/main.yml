@@ -1,0 +1,23 @@
+---
+# Default SSH security settings for homelab servers.
+
+# Linux account used for remote administration.
+ssh_admin_user: homelab-admin
+ssh_admin_groups:
+  - sudo
+
+# Path to the public SSH key on the Ansible control machine.
+# Override this variable if your public key is stored elsewhere.
+ssh_public_key_file: "{{ lookup('env', 'HOME') }}/.ssh/id_rsa.pub"
+
+# Require public-key authentication for SSH access.
+ssh_pubkey_authentication: "yes"
+
+# Disable password-based SSH authentication.
+ssh_password_authentication: "no"
+
+# Disable interactive keyboard-based authentication.
+ssh_kbd_interactive_authentication: "no"
+
+# Prevent direct SSH login as root.
+ssh_permit_root_login: "no"

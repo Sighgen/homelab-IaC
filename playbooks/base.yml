@@ -1,32 +1,14 @@
 
 ---
-# This playbook configures the basic software packages on a homelab host.
-# It is the starting point for our reusable infrastructure configuration.
+# Apply the reusable base role to homelab servers.
+# This playbook defines which hosts to configure and with what privileges.
 
 - name: Configure homelab base system
-  # Run this playbook against the hosts defined in the Ansible inventory.
   hosts: homelab
 
-  # Administrative tasks require elevated privileges on the target host.
+  # Use sudo for tasks that require administrative privileges.
   become: true
 
-  tasks:
-    # Keep the installed package information up to date.
-    - name: Update APT package cache
-      ansible.builtin.apt:
-        update_cache: true
-        cache_valid_time: 3600
-
-    # Install a small set of useful tools for administering the server.
-    # We will add Docker, firewall configuration and monitoring in later steps.
-    - name: Install base administration packages
-      ansible.builtin.apt:
-        name:
-          - ca-certificates
-          - curl
-          - git
-          - htop
-          - nano
-          - sudo
-          - unattended-upgrades
-        state: present
+  # Load the reusable role containing the base package configuration.
+  roles:
+    - base

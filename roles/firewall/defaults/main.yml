@@ -1,0 +1,15 @@
+---
+# Default firewall settings for the homelab.
+
+# Keep the SSH port configurable in case it changes later.
+firewall_ssh_port: 22
+
+# Default policy: block incoming connections unless explicitly allowed.
+firewall_default_incoming_policy: deny
+
+# Allow outgoing connections by default.
+firewall_default_outgoing_policy: allow
+
+# Additional TCP and UDP ports can be configured for hosted services.
+firewall_allowed_tcp_ports: []
+firewall_allowed_udp_ports: []

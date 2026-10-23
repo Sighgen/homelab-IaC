@@ -1,0 +1,12 @@
+---
+# Configure SSH access on homelab servers.
+# Keep this separate from the base playbook so it can be run independently.
+
+- name: Configure SSH service
+  hosts: homelab
+
+  # SSH package installation and service management require administrative privileges.
+  become: true
+
+  roles:
+    - ssh

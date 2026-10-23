@@ -1,0 +1,13 @@
+
+---
+# Configure Docker independently from the other homelab roles.
+
+- name: Configure Docker on homelab servers
+  hosts: homelab
+
+  # Installing packages and managing Docker requires administrative privileges.
+  become: true
+
+  roles:
+    - docker
+
