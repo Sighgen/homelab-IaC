@@ -1,0 +1,28 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+id_rsa
+id_ed25519
+vault-password-file
+secrets/
+private/
+homelab-config/
+
+# Ansible
+*.retry
+.vault_pass
+inventory/hosts.yml
+inventory/hosts.yaml
+inventory/production.yml
+inventory/production.yaml
+
+# Local/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
